@@ -1,0 +1,19 @@
+.form__element {
+    display: flex;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.form-container {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table{
+    margin-left: auto;
+    margin-right: auto;
+}
+

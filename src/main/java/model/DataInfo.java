@@ -10,15 +10,13 @@ public class DataInfo implements Serializable {
     private final Double valueR;
     private final String result;
     private final String time;
-    private final long scriptTime;
 
-    public DataInfo(Double valueX, Double valueY, Double valueR, String result, long startTime) {
+    public DataInfo(Double valueX, Double valueY, Double valueR, String result) {
         this.valueY = valueY;
         this.valueX = valueX;
         this.valueR = valueR;
         this.result = result;
         this.time = String.valueOf(new Date());
-        this.scriptTime = startTime - System.currentTimeMillis();
     }
 
     public Double getValueX() {
@@ -39,9 +37,5 @@ public class DataInfo implements Serializable {
 
     public String getTime() {
         return time;
-    }
-
-    public long getScriptTime() {
-        return scriptTime;
     }
 }
