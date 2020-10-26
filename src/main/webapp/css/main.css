@@ -1,5 +1,23 @@
-.form__element {
-    display: flex;
+body {
+    font-family: "Trebuchet MS", serif;
+    margin: 0;
+    padding: 0;
+    font-size: 130%;
+}
+
+.header {
+    color: #ffffff;
+    background-color: #4b4e6d;
+    padding: 0.5%;
+}
+
+.stud_name {
+    float: right;
+    margin-right: 3%;
+}
+
+.task {
+    margin-left: 3%;
 }
 
 .container {
@@ -10,10 +28,122 @@
 .form-container {
     margin-left: auto;
     margin-right: auto;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 12px 20px;
+    font-size: 120%;
 }
 
-table{
+.form__element {
+    display: flex;
+    padding: 10px 10px;
+}
+
+input, select, button {
+    font-size: 90%;
+    font-family: "Trebuchet MS", serif;
+    user-select: none;
+}
+
+button {
+    margin-right: 10px;
+    line-height: 34px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+select, input {
+    margin-left: 10px;
+}
+
+input[type=radio] {
+    display: none;
+    cursor: pointer;
+}
+.form__input-X {
+    border: none;
+    border-bottom: 2px solid #84dcc6;
+    background-color: #f2f2f2;
+}
+
+.form__input-R {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.form__input-R input[type=radio] {
+    display: none;
+}
+
+.form__input-R label {
+    display: inline-block;
+    cursor: pointer;
+    padding: 0 15px;
+    line-height: 34px;
+    border: 1px solid #95a3b3;
+    border-radius: 10px;
+    user-select: none;
+}
+
+.form__input-R input[type=radio]:checked + label {
+    background: #84dcc6;
+}
+
+.form__input-R label:hover {
+    color: #95a3b3;
+}
+
+select {
+    padding: 0 10px;
+    line-height: 34px;
+    border: 1px solid #95a3b3;
+    border-radius: 10px;
+    font-size: 100%;
+    font-family: "Trebuchet MS", serif;
+    cursor: pointer;
+    user-select: none;
+}
+
+select:hover {
+    color: #95a3b3;
+}
+
+button:hover {
+    color: #95a3b3;
+}
+
+.btn_submit {
+    background-color: #84dcc6;
+    border: 0;
+}
+
+.btn_clear {
+    border: 2px solid #84dcc6;
+    margin-right: 15px;
+}
+
+table {
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 1%;
+    text-align: center;
+    width: 70%;
 }
 
+th {
+    background-color: #4b4e6d;
+    color: #ffffff;
+    font-size: 120%;
+    padding: 0.5%;
+}
+
+td {
+    text-align: center;
+    background-color: #f2f2f2;
+}
+
+footer {
+    background-color: #4b4e6d;
+    padding: 0.5%;
+    text-align: center;
+}

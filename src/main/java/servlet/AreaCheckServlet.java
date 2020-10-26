@@ -1,6 +1,7 @@
 package servlet;
 
 import model.DataInfo;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,13 +25,14 @@ public class AreaCheckServlet extends HttpServlet {
         double valueY = Double.parseDouble(request.getParameter("value-Y"));
         double valueR = Double.parseDouble(request.getParameter("value-R"));
 
-        if(isValid(valueX, valueY, valueR)){
-            if(checkQuarterCircle(valueX, valueY, valueR) || checkRectangle(valueX, valueY, valueR) || checkTriangle(valueX, valueY, valueR)){
+        if (isValid(valueX, valueY, valueR)) {
+            if (checkQuarterCircle(valueX, valueY, valueR) || checkRectangle(valueX, valueY, valueR)
+                    || checkTriangle(valueX, valueY, valueR)) {
                 result = "TRUE";
-            }else{
+            } else {
                 result = "FALSE";
             }
-        }else{
+        } else {
             result = "Числа не входят в ОДЗ";
         }
 
@@ -40,24 +42,23 @@ public class AreaCheckServlet extends HttpServlet {
         tableData.add(object);
 
         session.setAttribute("tableData", tableData);
-        request.setAttribute("tableData", tableData);
 
         getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
-    private static boolean isValid(double valueX, double valueY, double valueR){
+    private static boolean isValid(double valueX, double valueY, double valueR) {
         return valueX > -3 && valueX < 3 && valueY >= -4 && valueY <= 4 && valueR >= 1 && valueR <= 5;
     }
 
-    private static boolean checkRectangle(double valueX, double valueY, double valueR){
-        return valueX <= 0 && valueY >= 0 && valueX >= -valueR && valueY <= valueR/2;
+    private static boolean checkRectangle(double valueX, double valueY, double valueR) {
+        return valueX <= 0 && valueY >= 0 && valueX >= -valueR && valueY <= valueR / 2;
     }
 
-    private static boolean checkQuarterCircle(double valueX, double valueY, double valueR){
-        return valueX >= 0 && valueY <= 0 && (valueX*valueX + valueY*valueY <= valueR*valueR/4);
+    private static boolean checkQuarterCircle(double valueX, double valueY, double valueR) {
+        return valueX >= 0 && valueY <= 0 && (valueX * valueX + valueY * valueY <= valueR * valueR);
     }
 
-    private static boolean checkTriangle(double valueX, double valueY, double valueR){
-        return valueX >= 0 && valueY >= 0 && (valueY <= -valueX + valueR/2);
+    private static boolean checkTriangle(double valueX, double valueY, double valueR) {
+        return valueX <= 0 && valueY <= 0 && (-valueY <= valueX + valueR);
     }
 }

@@ -30,18 +30,19 @@
     <title>web_lab2</title>
 </head>
 <body>
+
 <svg height="600" width="600" id="plot">
+
     <polygon class="rectangle-graph" fill=#95a3b3
              points="300,300 300,200 100,200 100,300"></polygon>
 
-    <polygon class="rectangle-graph" fill=#95a3b3
-             points="300,300 300,200 400,300"></polygon>
+    <polygon class="triangle-graph" fill=#95a3b3
+             points="300,300 300,500 100,300"></polygon>
 
-    <polygon class="rectangle-graph" fill=#95a3b3
-             points="300,300 401,300 300,401"></polygon>
+    <path class="circle-graph" d="M 500,300 A 200,200 0 0, 1 300,500" fill=#95a3b3></path>
+    <polygon class="circle-graph" fill=#95a3b3 points="300,300 501,300 300,501"></polygon>
 
-    <path class="circle-graph" d="M 400,300 A 100,100 0 0, 1 300,400" fill=#95a3b3></path>
-
+    <%--    Coordinate System--%>
     <line class="axis" stroke="black" x1="50" x2="550" y1="300" y2="300"></line>
     <line class="axis" stroke="black" x1="300" x2="300" y1="50" y2="550"></line>
 
