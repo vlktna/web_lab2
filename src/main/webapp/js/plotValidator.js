@@ -16,7 +16,6 @@ plot.addEventListener("click", function () {
     // Координаты выбранной точки в системе координат графика
     const calcX = ((valueX - centerX) * valueR / 200).toFixed(3)
     const calcY = ((centerY - valueY) * valueR / 200).toFixed(3)
-    console.log(calcX)
 
     if (valueR !== null && isPointIn("X", calcX, -3, 3)
         && isPointIn("Y", calcY, -4, 4)) {
@@ -25,7 +24,11 @@ plot.addEventListener("click", function () {
             type: "GET",
             data: "value-X=" + calcX + "&value-Y=" + calcY + "&value-R=" + valueR,
             success: function () {
-                location.replace("http://localhost:8080/web_lab2")
+                let getData = window.location.search;
+                let url = window.location.href;
+                let newUrl = url.replace(getData, '')
+                console.log(newUrl)
+                location.replace(newUrl)
             }
         })
     }
