@@ -21,8 +21,6 @@ public class AreaCheckServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         if (Validator.validation(request)) {
-            log("3");
-
             double valueX = Double.parseDouble(request.getParameter("value-X"));
             double valueY = Double.parseDouble(request.getParameter("value-Y"));
             double valueR = Double.parseDouble(request.getParameter("value-R"));
@@ -46,8 +44,6 @@ public class AreaCheckServlet extends HttpServlet {
             session.setAttribute("tableData", tableData);
         }
         getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-        log("4");
-
     }
 
 
