@@ -1,7 +1,6 @@
 package servlet;
 
 import model.DataInfo;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,29 +20,40 @@ public class AreaCheckServlet extends HttpServlet {
         String result;
         HttpSession session = request.getSession();
 
-        double valueX = Double.parseDouble(request.getParameter("value-X"));
-        double valueY = Double.parseDouble(request.getParameter("value-Y"));
-        double valueR = Double.parseDouble(request.getParameter("value-R"));
+        if (Validator.validation(request)) {
+            log("3");
 
-        if (isValid(valueX, valueY, valueR)) {
-            if (checkQuarterCircle(valueX, valueY, valueR) || checkRectangle(valueX, valueY, valueR)
-                    || checkTriangle(valueX, valueY, valueR)) {
-                result = "TRUE";
+            double valueX = Double.parseDouble(request.getParameter("value-X"));
+            double valueY = Double.parseDouble(request.getParameter("value-Y"));
+            double valueR = Double.parseDouble(request.getParameter("value-R"));
+
+            if (isValid(valueX, valueY, valueR)) {
+                if (checkQuarterCircle(valueX, valueY, valueR) || checkRectangle(valueX, valueY, valueR)
+                        || checkTriangle(valueX, valueY, valueR)) {
+                    result = "TRUE";
+                } else {
+                    result = "FALSE";
+                }
             } else {
-                result = "FALSE";
+                result = "Числа не входят в ОДЗ";
             }
-        } else {
-            result = "Числа не входят в ОДЗ";
+
+            DataInfo object = new DataInfo(valueX, valueY, valueR, result);
+            List<DataInfo> tableData = (ArrayList<DataInfo>) session.getAttribute("tableData");
+            tableData = tableData == null ? new ArrayList<DataInfo>() : tableData;
+            tableData.add(object);
+
+            session.setAttribute("tableData", tableData);
         }
-
-        DataInfo object = new DataInfo(valueX, valueY, valueR, result);
-        List<DataInfo> tableData = (ArrayList<DataInfo>) session.getAttribute("tableData");
-        tableData = tableData == null ? new ArrayList<DataInfo>() : tableData;
-        tableData.add(object);
-
-        session.setAttribute("tableData", tableData);
-
         getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+        log("4");
+
+    }
+
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
     }
 
     private static boolean isValid(double valueX, double valueY, double valueR) {
