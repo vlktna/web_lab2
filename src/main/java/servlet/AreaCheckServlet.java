@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/areaCheck")
-
 public class AreaCheckServlet extends HttpServlet {
 
     @Override

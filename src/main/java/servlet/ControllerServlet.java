@@ -15,10 +15,8 @@ public class ControllerServlet extends HttpServlet {
         log(String.valueOf(Validator.val()));
         if (Validator.validation(request)) {
             getServletContext().getRequestDispatcher("/areaCheck").forward(request, response);
-            log("1");
         } else {
             getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-            log("2");
         }
     }
 
